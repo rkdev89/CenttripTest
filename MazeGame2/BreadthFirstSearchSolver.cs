@@ -42,6 +42,9 @@ public class BreadthFirstSearchSolver : IMazeSolver
     }
     private void CheckNeighbor(Maze maze, Queue<Tuple<int, int>> queue, Dictionary<Tuple<int, int>, Tuple<int, int>> visited, int x, int y, Tuple<int, int> parent)
     {
+        if (x < 0 || y < 0 || x >= maze.Width || y >= maze.Height) // Check if coordinates are within bounds
+            return;
+
         var neighbor = new Tuple<int, int>(x, y);
         if (visited.ContainsKey(neighbor) || !maze.IsValidPosition(x, y))
             return;
@@ -51,15 +54,17 @@ public class BreadthFirstSearchSolver : IMazeSolver
     }
     private void ConstructPath(Maze maze, Dictionary<Tuple<int, int>, Tuple<int, int>> visited, Tuple<int, int> current)
     {
+
         while (visited[current] != null)
         {
             maze.Grid[current.Item1, current.Item2] = '*';
-            // Save current cursor position
-            int cursorLeft = Console.CursorLeft;
-            int cursorTop = Console.CursorTop;
+
+            // Ensure cursor position stays within the console buffer
+            int cursorLeft = Math.Max(0, Math.Min(Console.WindowWidth - 1, current.Item2));
+            int cursorTop = Math.Max(0, Math.Min(Console.WindowHeight - 1, current.Item1));
 
             // Move cursor to the position of the '*'
-            Console.SetCursorPosition(current.Item2, current.Item1);
+            Console.SetCursorPosition(cursorLeft, cursorTop);
 
             // Set console text color to blue
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -70,11 +75,34 @@ public class BreadthFirstSearchSolver : IMazeSolver
             // Reset console text color to default
             Console.ResetColor();
 
-            // Restore cursor position
-            Console.SetCursorPosition(cursorLeft, cursorTop);
             current = visited[current];
         }
         maze.Display();
         Console.WriteLine("Maze solved using Breadth First Search.");
+        //while (visited[current] != null)
+        //{
+        //    maze.Grid[current.Item1, current.Item2] = '*';
+        //    // Save current cursor position
+        //    int cursorLeft = Console.CursorLeft;
+        //    int cursorTop = Console.CursorTop;
+
+        //    // Move cursor to the position of the '*'
+        //    Console.SetCursorPosition(current.Item2, current.Item1);
+
+        //    // Set console text color to blue
+        //    Console.ForegroundColor = ConsoleColor.Blue;
+
+        //    // Print '*' character in blue
+        //    Console.Write('*');
+
+        //    // Reset console text color to default
+        //    Console.ResetColor();
+
+        //    // Restore cursor position
+        //    Console.SetCursorPosition(cursorLeft, cursorTop);
+        //    current = visited[current];
+        //}
+        //maze.Display();
+        //Console.WriteLine("Maze solved using Breadth First Search.");
     }
 }
