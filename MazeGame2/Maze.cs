@@ -30,7 +30,7 @@ public class Maze
         {
             for (int j = 0; j < height; j++)
             {
-                if (random.Next(100) < 30) // 30% chance to be a wall
+                if (random.Next(100) < 10) // 30% chance to be a wall
                     grid[i, j] = '#';
                 else
                     grid[i, j] = ' ';

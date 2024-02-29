@@ -56,10 +56,12 @@ Console.WriteLine("Welcome to Maze Solver!");
 
 while (true)
 {
+    Console.ForegroundColor = ConsoleColor.Blue;
     Console.WriteLine("\nChoose an option:");
     Console.WriteLine("1. Solve the maze manually");
     Console.WriteLine("2. Solve the maze using an algorithm");
     Console.WriteLine("3. Exit");
+    Console.ResetColor();
 
     int choice = GetChoice(1, 3);
 
@@ -87,7 +89,7 @@ while (true)
 
 Console.WriteLine("Exiting Maze Solver. Goodbye!");
 
-        static int GetChoice(int min, int max)
+static int GetChoice(int min, int max)
 {
     int choice;
     while (true)
@@ -137,6 +139,6 @@ static void ManualSolve(Maze maze)
 static void SolveWithAlgorithm(Maze maze)
 {
     Console.WriteLine("\nSolving the maze using an algorithm...");
-    IMazeSolver solver = new BreadthFirstSearchSolver();
+    var solver = new BreadthFirstSearchSolver();
     solver.SolveMaze(maze);
 }

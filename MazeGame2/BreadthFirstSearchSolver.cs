@@ -54,6 +54,24 @@ public class BreadthFirstSearchSolver : IMazeSolver
         while (visited[current] != null)
         {
             maze.Grid[current.Item1, current.Item2] = '*';
+            // Save current cursor position
+            int cursorLeft = Console.CursorLeft;
+            int cursorTop = Console.CursorTop;
+
+            // Move cursor to the position of the '*'
+            Console.SetCursorPosition(current.Item2, current.Item1);
+
+            // Set console text color to blue
+            Console.ForegroundColor = ConsoleColor.Blue;
+
+            // Print '*' character in blue
+            Console.Write('*');
+
+            // Reset console text color to default
+            Console.ResetColor();
+
+            // Restore cursor position
+            Console.SetCursorPosition(cursorLeft, cursorTop);
             current = visited[current];
         }
         maze.Display();
