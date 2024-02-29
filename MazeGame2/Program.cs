@@ -70,7 +70,7 @@ while (true)
 
     MazeFactory factory = new MazeFactory();
     IMazeGenerator generator = factory.GetMazeGenerator();
-    Maze maze = generator.GenerateMaze(40, 20);
+    Maze maze = generator.GenerateMaze(20, 20);
 
     switch (choice)
     {
@@ -106,6 +106,9 @@ static void ManualSolve(Maze maze)
 {
     Console.WriteLine("\nSolving the maze manually...");
     maze.Display();
+
+    DateTime startTime = DateTime.Now;
+
     while (true)
     {
         ConsoleKeyInfo keyInfo = Console.ReadKey(true);
@@ -126,12 +129,15 @@ static void ManualSolve(Maze maze)
             case ConsoleKey.Escape:
                 return;
         }
+
         if (maze.ReachedExit())
         {
+            TimeSpan elapsedTime = DateTime.Now - startTime; // Calculate elapsed time
             maze.Display();
-            Console.WriteLine("\nCongratulations! You reached the exit.");
+            Console.WriteLine($"\nCongratulations! You reached the exit in {elapsedTime.TotalSeconds:F2} seconds.");
             return;
         }
+
         maze.Display();
     }
 }
