@@ -1,8 +1,12 @@
-﻿namespace MazeGame2;
+﻿using System.Diagnostics;
+
+namespace MazeGame2;
 public class BreadthFirstSearchSolver : IMazeSolver
 {
+    private Stopwatch _stopwatch;
     public void SolveMaze(Maze maze)
     {
+        _stopwatch = Stopwatch.StartNew();
         Console.WriteLine("Solving maze using Breadth First Search...");
         var start = new Tuple<int, int>(0, 0);
         var target = new Tuple<int, int>(maze.Width - 1, maze.Height - 1);
@@ -78,7 +82,8 @@ public class BreadthFirstSearchSolver : IMazeSolver
             current = visited[current];
         }
         maze.Display();
-        Console.WriteLine("Maze solved using Breadth First Search.");
+        Console.WriteLine($"Maze solved using Breadth First Search in {_stopwatch.ElapsedMilliseconds}ms.");
+        _stopwatch.Stop();
         //while (visited[current] != null)
         //{
         //    maze.Grid[current.Item1, current.Item2] = '*';
