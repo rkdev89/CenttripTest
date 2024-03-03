@@ -1,9 +1,9 @@
 ﻿namespace MazeGame2;
-public class MazeSolver
+public class User
 {
     private readonly IMazeSolver _solver;
 
-    public MazeSolver(IMazeSolver solver)
+    public User(IMazeSolver solver)
     {
         _solver = solver;
     }

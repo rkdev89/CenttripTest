@@ -10,10 +10,9 @@ public class MazeSolverMenu
 
     public void DisplayMenu()
     {
-        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("\nChoose an option:");
-        Console.WriteLine("1. Solve the maze manually");
-        Console.WriteLine("2. Solve the maze using an algorithm");
+        Console.WriteLine("1. Solve a random maze by user input");
+        Console.WriteLine("2. Solve a random maze using an algorithm");
         Console.WriteLine("3. Exit");
         Console.ResetColor();
     }
@@ -21,13 +20,11 @@ public class MazeSolverMenu
     public int GetChoice(int min, int max)
     {
         int choice;
-        while (true)
+        do
         {
-            Console.Write("Enter your choice: ");
-            if (int.TryParse(Console.ReadLine(), out choice) && choice >= min && choice <= max)
-                break;
-            Console.WriteLine($"Please enter a number between {min} and {max}.");
-        }
+            Console.Write($"Enter your choice({min}-{max}): ");
+        } while (!int.TryParse(Console.ReadLine(), out choice) || choice < min || choice > max);
+
         return choice;
     }
 }

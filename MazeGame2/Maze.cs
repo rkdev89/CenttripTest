@@ -5,8 +5,8 @@ public class Maze
     private readonly int width;
     private readonly int height;
     private readonly Random random;
-    private int playerX;
-    private int playerY;
+    private int positionX;
+    private int positionY;
 
     public int Width => width;
     public int Height => height;
@@ -18,8 +18,8 @@ public class Maze
         this.height = height;
         grid = new char[width, height];
         random = new Random();
-        playerX = 0;
-        playerY = 0;
+        positionX = 0;
+        positionY = 0;
     }
 
     public void Initialize()
@@ -34,7 +34,7 @@ public class Maze
                     grid[i, j] = ' ';
             }
         }
-        grid[width - 1, height - 1] = 'E';
+        grid[width - 1, height - 1] = 'X';
     }
 
     public void Display()
@@ -44,8 +44,8 @@ public class Maze
         {
             for (int j = 0; j < width; j++)
             {
-                if (playerX == j && playerY == i)
-                    Console.Write('P');
+                if (positionX == j && positionY == i)
+                    Console.Write('O');
                 else
                     Console.Write(grid[j, i]);
             }
@@ -55,12 +55,12 @@ public class Maze
 
     public void MovePlayer(int dx, int dy)
     {
-        int newX = playerX + dx;
-        int newY = playerY + dy;
+        int newX = positionX + dx;
+        int newY = positionY + dy;
         if (IsValidPosition(newX, newY))
         {
-            playerX = newX;
-            playerY = newY;
+            positionX = newX;
+            positionY = newY;
         }
     }
 
@@ -71,6 +71,6 @@ public class Maze
 
     public bool ReachedExit()
     {
-        return playerX == width - 1 && playerY == height - 1;
+        return positionX == width - 1 && positionY == height - 1;
     }
 }

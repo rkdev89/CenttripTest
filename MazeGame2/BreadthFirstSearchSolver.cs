@@ -70,14 +70,8 @@ public class BreadthFirstSearchSolver : IMazeSolver
             // Move cursor to the position of the '*'
             Console.SetCursorPosition(cursorLeft, cursorTop);
 
-            // Set console text color to blue
-            Console.ForegroundColor = ConsoleColor.Blue;
-
-            // Print '*' character in blue
+            // Print '*' character
             Console.Write('*');
-
-            // Reset console text color to default
-            Console.ResetColor();
 
             current = visited[current];
         }
