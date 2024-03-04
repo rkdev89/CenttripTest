@@ -1,4 +1,5 @@
 **Maze Game**
+
 This C# maze game allows users to solve randomly generated mazes using arrow keys for navigation. Additionally, it features an optimal path displayed after solving the maze using the Breadth-First Search (BFS) algorithm. The game also tracks the time taken by the user to complete the maze and provides a notification upon successful completion.
 
 **Installation**
