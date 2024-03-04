@@ -18,7 +18,14 @@ public class Game
             if (choice == 3)
                 break;
 
-            var maze = factory.GetMazeGenerator().GenerateMaze(20, 20);
+            // Prompt user for maze size
+            Console.WriteLine("Enter the size of the maze (width height):");
+            Console.Write("Width: ");
+            int width = int.Parse(Console.ReadLine());
+            Console.Write("Height: ");
+            int height = int.Parse(Console.ReadLine());
+
+            var maze = factory.GetMazeGenerator().GenerateMaze(width, height);
 
             switch (choice)
             {
