@@ -12,6 +12,7 @@ Run the application.
 **How to Play**
 
 Upon starting the game, there is a menu in which the user can choose to manually solve, using arrow keys, a randomly generated maze that will be displayed.
+The user provides the input for the size of the randomly generated maze.
 Navigate to the exit marked 'E' while avoiding walls represented by '#' characters.
 Once the exit is reached, a notification will appear indicating completion and the time taken to solve the maze.
 Alternatively they can choose to solve a randomly generated maze using a Breadth First Search Algorithm
