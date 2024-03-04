@@ -5,7 +5,7 @@ This C# maze game allows users to solve randomly generated mazes using arrow key
 **Installation**
 
 Clone the repository to your local machine.
-Open the solution in Visual Studio or your preferred C# IDE.
+Open the solution in Visual Studio 2022.
 Build the solution to ensure all dependencies are resolved.
 Run the application.
 
