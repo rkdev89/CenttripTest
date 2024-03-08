@@ -15,8 +15,7 @@ public class Game
     }
     public void Start()
     {
-        Console.Title = "Centtrip Maze";
-        Console.WriteLine("Welcome to Centtrip's Maze Game!");
+        SetWindowTitleAndDisplayWelcomeMessage();
 
         while (true)
         {
@@ -26,30 +25,51 @@ public class Game
             if (choice == 3)
                 break;
 
-            // Prompt user for maze size. Maybe this can go in its own private method
-            Console.WriteLine("Enter the size of the maze (width height):");
-            Console.Write("Width: ");
-            int width = int.Parse(Console.ReadLine());
-            Console.Write("Height: ");
-            int height = int.Parse(Console.ReadLine());
-
+            var (width, height) = GetUserInputForMazeSize();
             var maze = _factory.GetMazeGenerator().GenerateMaze(width, height);
 
-            switch (choice)
-            {
-                case 1:
-                    _user.ManualSolve(maze);
-                    break;
-                case 2:
-                    _user.SolveWithAlgorithm(maze);
-                    break;
-            }
+            UserChoice(choice, maze);
 
-            Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey(true);
-            Console.Clear();
+            GetUserInputAndClearTerminal();
         }
 
         Console.WriteLine("Exiting Maze Solver. Goodbye!");
     }
+
+    #region HelperMethods
+    private (int width, int height) GetUserInputForMazeSize()
+    {
+        Console.WriteLine("Enter the size of the maze (width height):");
+        Console.Write("Width: ");
+        int width = int.Parse(Console.ReadLine());
+        Console.Write("Height: ");
+        int height = int.Parse(Console.ReadLine());
+        return (width, height);
+    }
+
+    private void SetWindowTitleAndDisplayWelcomeMessage()
+    {
+        Console.Title = "Centtrip Maze";
+        Console.WriteLine("Welcome to Centtrip's Maze Game!");
+    }
+    private void UserChoice(int choice, Maze maze)
+    {
+        switch (choice)
+        {
+            case 1:
+                _user.ManualSolve(maze);
+                break;
+            case 2:
+                _user.SolveWithAlgorithm(maze);
+                break;
+        }
+    }
+
+    private void GetUserInputAndClearTerminal()
+    {
+        Console.WriteLine("\nPress any key to continue...");
+        Console.ReadKey(true);
+        Console.Clear();
+    }
+    #endregion
 }
