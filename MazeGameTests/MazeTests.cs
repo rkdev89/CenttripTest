@@ -59,11 +59,11 @@ public class MazeTests
     {
         // Arrange
         maze.Initialize();
-        int validX = maze.Width - 2;
-        int validY = maze.Height - 2;
+        int validirectionX = maze.Width - 2;
+        int validirectionY = maze.Height - 2;
 
         // Assert
-        Assert.That(maze.IsValidPosition(validX, validY), Is.True);
+        Assert.That(maze.IsValidPosition(validirectionX, validirectionY), Is.True);
     }
 
     [Test]

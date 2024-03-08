@@ -53,10 +53,10 @@ public class Maze
         }
     }
 
-    public void MovePlayer(int dx, int dy)
+    public void MovePlayer(int directionX, int directionY)
     {
-        int newX = positionX + dx;
-        int newY = positionY + dy;
+        int newX = positionX + directionX;
+        int newY = positionY + directionY;
         if (IsValidPosition(newX, newY))
         {
             positionX = newX;
