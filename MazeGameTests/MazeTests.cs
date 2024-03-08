@@ -5,8 +5,6 @@ namespace MazeGameTests;
 public class MazeTests
 {
     private Maze maze;
-    private int positionX;
-    private int positionY;
 
     [SetUp]
     public void Setup()
@@ -17,12 +15,18 @@ public class MazeTests
     [Test]
     public void Constructor_InitializesGridWithCorrectSize()
     {
-        // Assert
-        Assert.AreEqual(5, maze.Width);
-        Assert.AreEqual(5, maze.Height);
-        Assert.IsNotNull(maze.Grid);
-        Assert.AreEqual(5, maze.Grid.GetLength(0));
-        Assert.AreEqual(5, maze.Grid.GetLength(1));
+        Assert.Multiple(() =>
+        {
+            // Assert
+            Assert.That(maze.Width, Is.EqualTo(5));
+            Assert.That(maze.Height, Is.EqualTo(5));
+            Assert.That(maze.Grid, Is.Not.Null);
+        });
+        Assert.Multiple(() =>
+        {
+            Assert.That(maze.Grid.GetLength(0), Is.EqualTo(5));
+            Assert.That(maze.Grid.GetLength(1), Is.EqualTo(5));
+        });
     }
 
     [Test]
@@ -46,8 +50,8 @@ public class MazeTests
             }
         }
 
-        Assert.IsTrue(wallFound);
-        Assert.IsTrue(exitFound);
+        Assert.That(wallFound, Is.True);
+        Assert.That(exitFound, Is.True);
     }
 
     [Test]
@@ -71,6 +75,6 @@ public class MazeTests
         int wallY = 1;
 
         // Assert
-        Assert.IsTrue(maze.IsValidPosition(wallX, wallY));
+        Assert.That(maze.IsValidPosition(wallX, wallY), Is.True);
     }
 }
