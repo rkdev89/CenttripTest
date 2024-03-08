@@ -1,13 +1,15 @@
-﻿namespace MazeGame2;
-public class MazeSolverMenu
+﻿using MazeGame;
+
+namespace MazeGame2;
+public class MazeSolverMenu : IMazeSolverMenu
 {
-    private readonly MazeFactory _factory;
-
-    public MazeSolverMenu(MazeFactory factory)
+    private readonly IMazeFactory _factory;
+    public MazeSolverMenu(IMazeFactory factory)
     {
-        _factory = factory;
-    }
 
+        _factory = factory;
+
+    }
     public void DisplayMenu()
     {
         Console.WriteLine("\nChoose an option:");

@@ -1,39 +1,47 @@
-﻿namespace MazeGame2;
+﻿using MazeGame;
+
+namespace MazeGame2;
 public class Game
 {
+    private readonly IMazeFactory _factory;
+    private readonly IMazeSolverMenu _menu;
+    private readonly IUser _user;
+
+    public Game(IMazeFactory factory, IMazeSolverMenu menu, IUser user)
+    {
+        _factory = factory;
+        _menu = menu;
+        _user = user;
+    }
     public void Start()
     {
         Console.Title = "Centtrip Maze";
         Console.WriteLine("Welcome to Centtrip's Maze Game!");
 
-        var factory = new MazeFactory();
-        var menu = new MazeSolverMenu(factory);
-        var solver = new User(new BreadthFirstSearchSolver());
-
         while (true)
         {
-            menu.DisplayMenu();
-            int choice = menu.GetChoice(1, 3);
+            _menu.DisplayMenu();
+            int choice = _menu.GetChoice(1, 3);
 
             if (choice == 3)
                 break;
 
-            // Prompt user for maze size
+            // Prompt user for maze size. Maybe this can go in its own private method
             Console.WriteLine("Enter the size of the maze (width height):");
             Console.Write("Width: ");
             int width = int.Parse(Console.ReadLine());
             Console.Write("Height: ");
             int height = int.Parse(Console.ReadLine());
 
-            var maze = factory.GetMazeGenerator().GenerateMaze(width, height);
+            var maze = _factory.GetMazeGenerator().GenerateMaze(width, height);
 
             switch (choice)
             {
                 case 1:
-                    solver.ManualSolve(maze);
+                    _user.ManualSolve(maze);
                     break;
                 case 2:
-                    solver.SolveWithAlgorithm(maze);
+                    _user.SolveWithAlgorithm(maze);
                     break;
             }
 

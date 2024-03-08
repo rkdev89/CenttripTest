@@ -1,5 +1,7 @@
-﻿namespace MazeGame2;
-public class User
+﻿using MazeGame;
+
+namespace MazeGame2;
+public class User : IUser
 {
     private readonly IMazeSolver _solver;
 

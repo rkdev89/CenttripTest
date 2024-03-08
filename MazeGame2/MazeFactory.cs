@@ -1,5 +1,7 @@
-﻿namespace MazeGame2;
-public class MazeFactory
+﻿using MazeGame;
+
+namespace MazeGame2;
+public class MazeFactory : IMazeFactory
 {
     public IMazeGenerator GetMazeGenerator()
     {
