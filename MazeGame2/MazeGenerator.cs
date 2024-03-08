@@ -1,4 +1,6 @@
-﻿namespace MazeGame2;
+﻿using MazeGame.Interfaces;
+
+namespace MazeGame2;
 public class MazeGenerator : IMazeGenerator
 {
     public Maze GenerateMaze(int width, int height)

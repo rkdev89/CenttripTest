@@ -1,4 +1,4 @@
-﻿using MazeGame;
+﻿using MazeGame.Interfaces;
 
 namespace MazeGame2;
 public class MazeFactory : IMazeFactory

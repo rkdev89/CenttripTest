@@ -1,6 +1,4 @@
-﻿using MazeGame2;
-
-namespace MazeGame;
+﻿namespace MazeGame.Interfaces;
 public interface IMazeFactory
 {
     IMazeGenerator GetMazeGenerator();

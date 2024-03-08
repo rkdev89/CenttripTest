@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using MazeGame.Interfaces;
 
 namespace MazeGame2;
 public class BreadthFirstSearchSolver : IMazeSolver

@@ -1,4 +1,5 @@
-﻿using MazeGame2;
+﻿using MazeGame.Interfaces;
+using MazeGame2;
 
 namespace MazeGameTests;
 [TestFixture]

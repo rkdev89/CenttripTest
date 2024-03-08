@@ -1,4 +1,4 @@
-﻿namespace MazeGame;
+﻿namespace MazeGame.Interfaces;
 public interface IMazeSolverMenu
 {
     void DisplayMenu();
